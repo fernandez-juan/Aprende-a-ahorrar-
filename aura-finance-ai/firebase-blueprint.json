@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "Perfil de Usuario",
+      "description": "Información financiera base del usuario",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "monthlyIncome": { "type": "number" },
+        "currency": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "monthlyIncome"]
+    },
+    "Transaction": {
+      "title": "Transacción",
+      "description": "Registro de gasto o ingreso",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string", "enum": ["income", "expense"] },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "ticketImageUrl": { "type": "string" },
+        "smartNotes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["amount", "type", "category", "date"]
+    },
+    "SavingsGoal": {
+      "title": "Meta de Ahorro",
+      "description": "Objetivo de ahorro específico",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "currentAmount": { "type": "number" },
+        "deadline": { "type": "string", "format": "date-time" },
+        "category": { "type": "string" },
+        "icon": { "type": "string" }
+      }
+    },
+    "Investment": {
+      "title": "Inversión",
+      "description": "Registro de activos de inversión",
+      "type": "object",
+      "properties": {
+        "assetName": { "type": "string" },
+        "symbol": { "type": "string" },
+        "initialValue": { "type": "number" },
+        "currentValue": { "type": "number" },
+        "purchaseDate": { "type": "string", "format": "date-time" },
+        "type": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Perfil financiero principal del usuario"
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Lista de movimientos financieros"
+    },
+    "/users/{userId}/goals/{goalId}": {
+      "schema": "SavingsGoal",
+      "description": "Objetivos de ahorro del usuario"
+    },
+    "/users/{userId}/investments/{investmentId}": {
+      "schema": "Investment",
+      "description": "Portafolio de inversiones"
+    }
+  }
+}

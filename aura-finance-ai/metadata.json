@@ -1,0 +1,6 @@
+{
+  "name": "Aura Finance AI",
+  "description": "Una plataforma financiera futurista impulsada por IA que ofrece gestión inteligente de gastos, proyecciones de ahorro y asesoramiento por voz en tiempo real.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["AI Financial Planning", "Expense OCR", "Voice Guidance", "Predictive Analytics"]
+}

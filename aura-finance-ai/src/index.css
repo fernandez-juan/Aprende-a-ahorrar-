@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-aura-bg: #030712;
+  --color-aura-card: rgba(17, 24, 39, 0.7);
+  --color-aura-accent: #3b82f6;
+  --color-aura-accent-glow: rgba(59, 130, 246, 0.5);
+  --color-aura-success: #10b981;
+  --color-aura-danger: #ef4444;
+  --color-aura-warning: #f59e0b;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-aura-bg text-slate-100 font-sans selection:bg-aura-accent/30 selection:text-white;
+    background-image: 
+      radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15), transparent 40%),
+      radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.05), transparent 30%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-aura-card backdrop-blur-xl border border-white/10 rounded-3xl;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .aura-button {
+    @apply relative px-6 py-3 rounded-2xl font-display font-medium transition-all duration-300 active:scale-95 disabled:opacity-50 overflow-hidden;
+  }
+  
+  .aura-button-primary {
+    @apply bg-aura-accent text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.6)];
+  }
+  
+  .aura-input {
+    @apply bg-white/5 border border-white/10 rounded-2xl px-4 py-3 outline-none focus:border-aura-accent/50 focus:ring-2 focus:ring-aura-accent/20 transition-all text-white placeholder:text-slate-500;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20;
+}
+
